@@ -1,0 +1,3 @@
+etopo1:
+  urlpath: /glade/work/mclong/etopo1/ETOPO1_Ice_c_gmt4.nc
+  urlpath_source: 'https://www.ngdc.noaa.gov/mgg/global/relief/ETOPO1/data/ice_surface/cell_registered/netcdf/ETOPO1_Ice_c_gmt4.grd.gz'
