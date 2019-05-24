@@ -8,6 +8,8 @@ USER = os.environ['USER']
 DATAROOT = f'/glade/work/{USER}'
 os.environ['DATAROOT'] = DATAROOT
 
+inputdata = '/glade/p/cesmdata/cseg/inputdata'
+
 dirwork = f'{DATAROOT}/cesm_inputdata/work'
 os.makedirs(dirwork, exist_ok=True)   
 
@@ -17,22 +19,10 @@ os.makedirs(dirout, exist_ok=True)
 with open('datasets.yaml') as f:
     datasets = yaml.safe_load(f)
 
-
-def compute_vertical_grids():
-    vert_grid_edges = {}
-    vert_grid_center = {}
-    for grid in ['POP_gx1v7', 'POP_gx3v7', 'POP_tx0.1v3']:
-        vert_grid_file = f'../data/grids/{grid}_vert_grid.txt'
-        tmp = np.loadtxt(vert_grid_file)
-        dz = tmp[:, 0]
-        depth_edges = np.concatenate(([0.],np.cumsum(dz)))
-        vert_grid_edges[grid] = depth_edges
-        vert_grid_center[grid] = depth_edges[0:-1] + 0.5 * dz
-
-    return vert_grid_edges
-    
 def sedfrac_file(grid):
     return f'{dirwork}/sedfrac.{grid}.nc'
 
-
-vert_grid_edges = compute_vertical_grids()
+# TODO: use svn export to get these out of input data repo
+topography_files = {'POP_gx1v7': f'{inputdata}/ocn/pop/gx1v7/grid/topography_20161215.ieeei4', 
+                    'POP_gx3v7': f'{inputdata}/ocn/pop/gx3v7/grid/topography_20100105.ieeei4',
+                    'POP_tx0.1v3': f'{inputdata}/ocn/pop/tx0.1v3/grid/topography_20170718.ieeei4'}

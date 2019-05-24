@@ -1,0 +1,4 @@
+esmlab:
+  sample_data_dir: "~/.esmlab/sample_data"
+regrid:
+  gridfile_directory: /glade/work/${USER}/esmlab-regrid 
