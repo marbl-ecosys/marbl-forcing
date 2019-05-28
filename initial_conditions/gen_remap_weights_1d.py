@@ -1,6 +1,5 @@
 import cf_units
 import numpy as np
-import xarray as xr
 from scipy.sparse import csr_matrix
 
 def interval_overlap(interval_1, interval_2):
