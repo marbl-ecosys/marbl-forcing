@@ -52,3 +52,13 @@ def time_bnds_mon(years):
                         cftime.date2num(cftime.DatetimeNoLeap(year, mon, eom_day_noleap[mon-1]),
                                       units='days since 0001-01-01', calendar='noleap')]
                        for year, mon in product(years, range(1, 13))]), dims=('time', 'ntb'))
+
+def ds_clean(ds):
+    """
+    clean up, in-place, metadata in ds, and return ds
+    avoid extraneous _FillValue attributes
+    """
+    for var in ds.variables:
+        if '_FillValue' not in ds[var].encoding:
+            ds[var].encoding['_FillValue'] = None
+    return ds
