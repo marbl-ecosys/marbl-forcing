@@ -1,0 +1,15 @@
+lateral_dims: [ 458,  540]
+vertical_dims: 34
+type: curvilinear
+open_vertical_grid:
+    vert_grid_file: grid_data/tx0.66v1_vert_grid
+    depth_units: m
+    depth_coord_name: z_t
+gen_grid_file:
+    method: gen_POP_grid_file
+    kwargs:
+        horiz_grid_fname: /glade/p/cesmdata/cseg/inputdata/ocn/mom/tx0.66v1/grid/horiz_grid_20190315.ieeer8
+        topography_fname: /glade/p/cesmdata/cseg/inputdata/ocn/mom/tx0.66v1/grid/topography_20190315.ieeei4
+        region_mask_fname: None
+        type: tripole
+        lateral_dims: [ 458,  540]
